@@ -1,19 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "Clear Language Rewriter",
+  "name": "Text Simplifier",
   "version": "1.0",
-  "description": "Rewrites webpage text into clear language",
-  "permissions": ["activeTab", "scripting"],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://your-api-domain.com/*"  // Replace with your actual API domain
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_title": "Simplify Text"
+  },
+  "background": {
+    "service_worker": "background.js"
   }
 }
