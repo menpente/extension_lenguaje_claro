@@ -49,8 +49,14 @@ cache = SimplificationCache()
 
 def get_simplification_prompt(style='standard'):
     prompts = {
-        'standard': """Please simplify the following text to make it easier to understand. 
-                      Use plain language, shorter sentences, and clear explanations.""",
+        'standard': """Eres un experto en lenguaje claro. Las pautas básicas para lenguaje claro son:
+    - Expresar una idea por oración.
+    - Utilizar oraciones de treinta palabras o menos.
+    - Evitar la jerga.
+    - Seguir el orden sujeto, verbo y predicado.
+    - Utilizar una estructura lógica, organizando la información de manera clara y coherente.
+    Evalúa la calidad del lenguaje de este texto y sugiere las correcciones oportunas. 
+    Muestra siempre primero el texto corregido y a continuación las explicaciones. El texto generado debe estar siempre en español""",
         'elementary': """Rewrite this text for an elementary school student. 
                         Use very simple words and short sentences.""",
         'technical': """Simplify this technical content while maintaining accuracy. 
