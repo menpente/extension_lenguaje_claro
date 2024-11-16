@@ -6,34 +6,7 @@ groq==0.4.1
 redis==4.6.0
 python-dotenv==1.0.0
 gunicorn==21.2.0
+sentry-sdk==1.39.1
 
-# Dockerfile
-FROM python:3.9-slim
-
-WORKDIR /app
-
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
-COPY . .
-
-CMD gunicorn --bind 0.0.0.0:$PORT app:app
-
-# docker-compose.yml
-version: '3.8'
-services:
-  web:
-    build: .
-    ports:
-      - "5000:5000"
-    environment:
-      - GROQ_API_KEY=${GROQ_API_KEY}
-      - REDIS_URL=redis://redis:6379
-    depends_on:
-      - redis
-  
-  redis:
-    image: redis:alpine
-    ports:
-      - "6379:6379"
-
+# Procfile
+web: gunicorn app:app
